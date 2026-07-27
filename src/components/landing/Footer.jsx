@@ -30,7 +30,7 @@ export default function Footer() {
             </Link>
 
             <p className="mt-6 max-w-md leading-7 text-[#8A8178] dark:text-gray-400">
-              MorningFocus helps you stay consistent by focusing on one
+              MorningFocus helps you stay consistent by focusing on three
               meaningful goal every day with personalized AI motivation and
               progress tracking.
             </p>

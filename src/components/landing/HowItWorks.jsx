@@ -11,7 +11,7 @@ const steps = [
     icon: HiOutlineCursorArrowRays,
     title: "Choose Your Focus",
     description:
-      "Start your day by selecting one meaningful goal. Fewer priorities mean deeper focus and better results.",
+      "Start your day by selecting three meaningful goal. Fewer priorities mean deeper focus and better results.",
   },
   {
     icon: HiOutlineSparkles,
