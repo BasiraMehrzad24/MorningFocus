@@ -65,7 +65,7 @@ export default function Sidebar({ isCollapsed, setIsCollapsed, userProfile }) {
     }
 
     // return to the landing page
-    navigate("/");
+    window.location.href = "/";
   };
 
   return (
