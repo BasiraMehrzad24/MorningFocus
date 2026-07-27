@@ -8,9 +8,7 @@ MorningFocus is an AI-powered productivity application designed to help users fo
 
 **Live Application**
 
-https://your-app.vercel.app
-
----
+## https://morningfocus.netlify.app/
 
 # Features
 
@@ -70,13 +68,17 @@ src/
 
 MorningFocus uses custom React hooks to separate business logic from UI components, making the application easier to maintain and scale.
 
-| Hook               | Purpose                                                                                                                   |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| `useAuth`          | Handles user authentication, session management, profile loading, profile updates, and sign out using Supabase.           |
-| `useGoals`         | Manages daily goals, AI motivation, streak calculation, goal history, local storage synchronization, and goal operations. |
-| `useNotifications` | Manages notification creation, deletion, read status, and local storage persistence.                                      |
-| `useReminder`      | Handles browser notification permissions, reminder scheduling, reminder time, and notification service.                   |
-| `useTheme`         | Controls dark/light mode and synchronizes the selected theme with local storage and the document.                         |
+| Hook | Purpose
+
+| `useAuth` | Handles user authentication, session management, profile loading, profile updates, and sign out using Supabase. |
+
+| `useGoals` | Manages daily goals, AI motivation, streak calculation, goal history, local storage synchronization, and goal operations. |
+
+|`useNotifications` | Manages notification creation, deletion, read status, and local storage persistence. |
+
+| `useReminder` | Handles browser notification permissions, reminder scheduling, reminder time, and notification service. |
+
+| `useTheme` | Controls dark/light mode and synchronizes the selected theme with local storage and the document. |
 
 Using custom hooks keeps presentation components focused on rendering while reusable business logic is centralized.
 
@@ -222,23 +224,6 @@ This project can be deployed on:
 
 ---
 
-# Demo Video
-
-The demo video (3–5 minutes) demonstrates:
-
-- The problem MorningFocus solves
-- User authentication
-- Landing page
-- Dashboard
-- AI-generated motivation
-- Daily goal management
-- Weekly reflection
-- Browser notifications
-- Challenges faced during development
-- Future improvements
-
----
-
 # Reflection
 
 MorningFocus is an AI-powered productivity application that encourages users to focus on a few meaningful goals each day instead of managing overwhelming task lists. Throughout this project, I strengthened my skills in React, Tailwind CSS, custom hooks, Supabase authentication, API integration, and modern frontend architecture while learning how to incorporate AI into a practical real-world application.
@@ -268,9 +253,7 @@ If I continue developing MorningFocus, I would like to transform it into a Progr
 
 GitHub Repository
 
-https://github.com/BasiraMehrzad24/MorningFocus
-
----
+## https://github.com/BasiraMehrzad24/MorningFocus.git
 
 # Author
 
