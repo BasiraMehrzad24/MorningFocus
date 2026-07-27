@@ -50,8 +50,8 @@ export default function Hero() {
               {/* description */}
 
               <p className="mt-8 max-w-lg text-lg leading-8 text-[#8A8178] dark:text-gray-300">
-                Stop juggling dozens of tasks. MorningFocus helps you choose one
-                meaningful goal, receive AI guidance, and build lasting
+                Stop juggling dozens of tasks. MorningFocus helps you choose
+                three meaningful goal, receive AI guidance, and build lasting
                 consistency every day.
               </p>
 
