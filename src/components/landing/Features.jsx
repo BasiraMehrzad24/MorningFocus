@@ -12,7 +12,7 @@ const features = [
     icon: HiOutlineFire,
     title: "Most Important Task",
     description:
-      "Choose one meaningful priority every morning instead of juggling dozens of tasks.",
+      "Choose three meaningful priority every morning instead of juggling dozens of tasks.",
   },
   {
     icon: HiOutlineSparkles,
@@ -65,8 +65,8 @@ export default function Features() {
 
           <p className="mt-8 text-lg leading-8 text-[#8A8178] dark:text-gray-300">
             MorningFocus removes the clutter found in traditional task managers.
-            Every feature is designed to help you stay focused on one meaningful
-            goal and finish it.
+            Every feature is designed to help you stay focused on three
+            meaningful goal and finish it.
           </p>
         </div>
 
