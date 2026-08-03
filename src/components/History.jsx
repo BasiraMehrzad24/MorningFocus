@@ -98,21 +98,67 @@ export default function History({
           {showAll ? (
             <Link
               to="/today"
-              className="group flex items-center gap-2 rounded-2xl border border-orange-200 px-4 py-2 text-sm font-semibold text-orange-500 transition-all duration-300 hover:bg-orange-100 hover:shadow-sm dark:border-[#24359E] dark:text-[#E1CB40] dark:hover:bg-[#16206B]"
+              className="
+    group
+    flex
+    items-center
+    gap-2
+    rounded-2xl
+    border
+    border-orange-200
+    px-4
+    py-2
+    text-sm
+    font-semibold
+    transition-all
+    duration-300
+
+    bg-orange-50
+    text-orange-500
+    hover:bg-orange-100
+    hover:text-orange-600
+    hover:shadow-sm
+
+    dark:border-[#24359E]
+    dark:bg-[#16206B]
+    dark:text-[#E1CB40]
+    dark:hover:bg-[#24359E]
+    dark:hover:text-[#FFD84D]
+"
             >
               <HiOutlineArrowLeft
                 size={16}
                 className="transition-transform duration-300 group-hover:-translate-x-1"
               />
+
               <span>Back</span>
             </Link>
           ) : (
             <Link
               to="/history"
-              className="flex items-center gap-2 text-sm font-medium text-orange-500 transition hover:text-orange-600 dark:text-[#E1CB40]"
+              className="
+    group
+    flex
+    items-center
+    gap-3
+    text-base
+    font-semibold
+    transition-all
+    duration-300
+
+    text-orange-500
+    hover:text-orange-600
+
+    dark:text-[#E1CB40]
+    dark:hover:text-[#FFD84D]
+  "
             >
-              View All
-              <HiOutlineArrowRight />
+              <span>View All</span>
+
+              <HiOutlineArrowRight
+                size={22}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
             </Link>
           )}
         </div>

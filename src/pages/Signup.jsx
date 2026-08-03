@@ -6,8 +6,12 @@ import {
   HiOutlineLockClosed,
 } from "react-icons/hi2";
 import { supabase } from "../api/supabase";
+import useTheme from "../hooks/useTheme";
 
 export default function Signup() {
+  // current theme
+  const { darkMode } = useTheme();
+
   // signup form state
   const [form, setForm] = useState({
     firstName: "",
@@ -79,7 +83,7 @@ export default function Signup() {
 
         {/* signup form */}
         <form onSubmit={handleSubmit} className="space-y-5">
-          {/* first name field */}
+          {/* first name */}
           <div>
             <label className="mb-2 block text-sm font-medium text-[#574A3F] dark:text-white">
               First Name
@@ -99,7 +103,7 @@ export default function Signup() {
             </div>
           </div>
 
-          {/* last name field */}
+          {/* last name */}
           <div>
             <label className="mb-2 block text-sm font-medium text-[#574A3F] dark:text-white">
               Last Name
@@ -119,7 +123,7 @@ export default function Signup() {
             </div>
           </div>
 
-          {/* email field */}
+          {/* email */}
           <div>
             <label className="mb-2 block text-sm font-medium text-[#574A3F] dark:text-white">
               Email
@@ -139,7 +143,7 @@ export default function Signup() {
             </div>
           </div>
 
-          {/* password field */}
+          {/* password */}
           <div>
             <label className="mb-2 block text-sm font-medium text-[#574A3F] dark:text-white">
               Password
@@ -163,7 +167,11 @@ export default function Signup() {
           {/* submit button */}
           <button
             type="submit"
-            className="w-full rounded-2xl bg-orange-500 py-4 font-semibold text-white transition hover:bg-orange-600 dark:bg-[#E1CB40] dark:text-[#03045E]"
+            className={`w-full rounded-2xl py-4 font-semibold transition ${
+              darkMode
+                ? "bg-[#E1CB40] text-[#03045E] hover:bg-[#FFD84D]"
+                : "bg-orange-500 text-white hover:bg-orange-600"
+            }`}
           >
             Create Account
           </button>

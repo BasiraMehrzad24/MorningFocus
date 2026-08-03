@@ -3,7 +3,6 @@ import { HiOutlineSparkles, HiOutlineCursorArrowRays } from "react-icons/hi2";
 import { generateMotivation } from "../api/openRouter";
 
 export default function GoalForm({
-  goals,
   setGoals,
   setCurrentGoal,
   loading,
@@ -21,6 +20,12 @@ export default function GoalForm({
   // handles creating a new goal
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // prevent creating more than 3 goals
+    if (hasReachedDailyLimit) {
+      setError("You've reached today's limit of 3 goals.");
+      return;
+    }
 
     const trimmedGoal = goal.trim();
 
@@ -113,56 +118,62 @@ export default function GoalForm({
 
         {/* goal input form */}
         <form onSubmit={handleSubmit} className="space-y-4">
-          <textarea
-            disabled={hasReachedDailyLimit}
-            rows={3}
-            maxLength={150}
-            placeholder="e.g. Finish my React portfolio project..."
-            value={goal}
-            onChange={(e) => setGoal(e.target.value)}
-            className="w-full resize-none rounded-2xl border border-orange-100 bg-[#FFFDF9] p-4 text-base text-[#574A3F] outline-none transition disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400 focus:border-orange-300 dark:border-[#1A237E] dark:text-white dark:placeholder:text-gray-400 dark:focus:border-[#E1CB40] dark:disabled:bg-[#0E1550] dark:disabled:text-gray-500 dark:bg-[#03045E]/10 backdrop-blur-md"
-          />
+          {!hasReachedDailyLimit ? (
+            <>
+              <textarea
+                rows={3}
+                maxLength={150}
+                placeholder="e.g. Finish my React portfolio project..."
+                value={goal}
+                onChange={(e) => setGoal(e.target.value)}
+                className="w-full resize-none rounded-2xl border border-orange-100 bg-[#FFFDF9] p-4 text-base text-[#574A3F] outline-none transition focus:border-orange-300 dark:border-[#1A237E] dark:bg-[#03045E]/10 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-[#E1CB40] backdrop-blur-md"
+              />
 
-          {/* show the daily limit message */}
-          {hasReachedDailyLimit && (
-            <div className="rounded-xl bg-orange-50 p-3 text-sm text-orange-700 dark:bg-[#16206B] dark:text-[#E1CB40]">
-              You've reached today's limit of 3 goals. Come back tomorrow to add
-              more.
+              {/* display validation errors */}
+              {error && (
+                <p className="mt-2 text-sm font-medium text-red-500">{error}</p>
+              )}
+
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                {/* character counter */}
+                <span className="text-sm text-[#8A8178] dark:text-gray-300">
+                  {goal.length}/150
+                </span>
+
+                {/* today's goal counter */}
+                <span className="rounded-full bg-orange-100 px-3 py-1 text-sm font-medium text-orange-600 dark:bg-[#16206B] dark:text-[#E1CB40]">
+                  {todayGoalsCount}/3 Goals Today
+                </span>
+
+                {/* submit button */}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="flex items-center justify-center gap-2 rounded-2xl bg-orange-400 px-6 py-3 font-medium text-white transition hover:bg-orange-500 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-[#E1CB40] dark:text-[#03045E] dark:hover:bg-[#F5DA57]"
+                >
+                  <HiOutlineSparkles size={18} />
+                  {loading ? "Generating..." : "Set Goal"}
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="rounded-2xl border border-orange-100 bg-orange-50 p-8 text-center dark:border-[#1A237E] dark:bg-[#16206B]">
+              <h3 className="text-xl font-semibold text-orange-600 dark:text-[#E1CB40]">
+                Daily Goal Limit Reached
+              </h3>
+
+              <p className="mt-3 text-[#8A8178] dark:text-gray-300">
+                You've already created <strong>3 goals today.</strong>
+                <br />
+                Delete one of today's goals or come back tomorrow to create
+                another.
+              </p>
+
+              <div className="mt-5 inline-flex rounded-full bg-orange-100 px-4 py-2 text-sm font-medium text-orange-600 dark:bg-[#253381] dark:text-[#E1CB40]">
+                {todayGoalsCount}/3 Goals Today
+              </div>
             </div>
           )}
-
-          {/* display validation errors */}
-          {error && (
-            <p className="mt-2 text-sm font-medium text-red-500">{error}</p>
-          )}
-
-          {/* footer actions */}
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            {/* character counter */}
-            <span className="text-sm text-[#8A8178] dark:text-gray-300">
-              {goal.length}/150
-            </span>
-
-            {/* today's goal counter */}
-            <span className="rounded-full bg-orange-100 px-3 py-1 text-sm font-medium text-orange-600 dark:bg-[#16206B] dark:text-[#E1CB40]">
-              {todayGoalsCount}/3 Goals Today
-            </span>
-
-            {/* submit button */}
-            <button
-              type="submit"
-              disabled={loading || hasReachedDailyLimit}
-              className="flex items-center justify-center gap-2 rounded-2xl bg-orange-400 px-6 py-3 font-medium text-white transition hover:bg-orange-500 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-[#E1CB40] dark:text-[#03045E] dark:hover:bg-[#F5DA57]"
-            >
-              <HiOutlineSparkles size={18} />
-
-              {loading
-                ? "Generating..."
-                : hasReachedDailyLimit
-                  ? "Daily Limit Reached"
-                  : "Set Goal"}
-            </button>
-          </div>
         </form>
       </div>
     </section>

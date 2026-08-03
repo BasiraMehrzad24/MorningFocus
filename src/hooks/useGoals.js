@@ -44,13 +44,19 @@ export default function useGoals() {
   }, [goals]);
 
   // today's date is used to check the daily goal limit
-const today = new Date().toDateString();
-  // count how many goals were created today
-  const todayGoalsCount = useMemo(() => {
-    return goals.filter(
-      (goal) => new Date(goal.createdAt).toDateString() === today
-    ).length;
-  }, [goals, today]);
+const today = useMemo(() => new Date().toDateString(), []);
+
+// count how many goals were created today
+const todayGoalsCount = useMemo(() => {
+  return goals.filter((goal) => {
+    if (!goal.createdAt) return false;
+
+    return (
+      new Date(goal.createdAt).toDateString() ===
+      new Date().toDateString()
+    );
+  }).length;
+}, [goals]);
 
   // users can only create three goals each day
   const hasReachedDailyLimit = todayGoalsCount >= 3;
@@ -73,6 +79,13 @@ const today = new Date().toDateString();
       setMotivation("");
     }
   };
+
+
+  useEffect(() => {
+  console.log("Goals:", goals);
+  console.log("Today's count:", todayGoalsCount);
+  console.log("Limit:", hasReachedDailyLimit);
+}, [goals, todayGoalsCount, hasReachedDailyLimit]);
 
   // expose everything that other components need
 return {

@@ -17,17 +17,10 @@ export default function Today({
   addNotification,
   darkMode,
   todayGoalsCount,
+  hasReachedDailyLimit,
 }) {
-  // get today's date
-  const today = new Date().toDateString();
-
-  // filter goals created today
-  const todayGoals = goals.filter(
-    (goal) => new Date(goal.createdAt).toDateString() === today,
-  );
-
-  // limit users to three goals per day
-  const hasReachedLimit = todayGoals.length >= 3;
+  console.log("todayGoalsCount:", todayGoalsCount);
+  console.log("hasReachedDailyLimit:", hasReachedDailyLimit);
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 lg:px-8">
@@ -42,8 +35,8 @@ export default function Today({
         setError={setError}
         setMotivation={setMotivation}
         addNotification={addNotification}
-        hasGoalToday={hasReachedLimit}
         todayGoalsCount={todayGoalsCount}
+        hasReachedDailyLimit={hasReachedDailyLimit}
       />
 
       {/* motivation and progress cards */}

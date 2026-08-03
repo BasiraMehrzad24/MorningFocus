@@ -50,11 +50,24 @@ export default function MotivationCard({
         {/* navigate to the motivation history page */}
         <Link
           to="/motivation-history"
-          className="flex items-center gap-2 text-sm font-medium text-orange-500 transition hover:text-orange-600 dark:text-[#E1CB40]"
+          className={`
+    flex items-center gap-2
+    text-sm font-medium
+    transition-all duration-200
+
+    text-orange-500
+    hover:text-orange-600
+
+    dark:text-[#E1CB40]
+    dark:hover:text-[#FFD84D]
+  `}
         >
           <span>View All</span>
 
-          <HiOutlineArrowRight size={20} />
+          <HiOutlineArrowRight
+            size={20}
+            className="transition-transform duration-200 group-hover:translate-x-1"
+          />
         </Link>
       </div>
 

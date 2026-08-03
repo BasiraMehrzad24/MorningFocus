@@ -2,12 +2,12 @@ import { useState } from "react";
 import {
   HiOutlineHome,
   HiOutlineClock,
-  HiOutlineChartBar,
   HiOutlineLightBulb,
   HiOutlineCog6Tooth,
   HiOutlineBars3,
   HiChevronLeft,
   HiOutlineArrowRightOnRectangle,
+  HiOutlineQueueList,
 } from "react-icons/hi2";
 import { supabase } from "../api/supabase";
 import { FiSun } from "react-icons/fi";
@@ -25,24 +25,32 @@ const menuSections = [
         path: "/today",
         icon: <HiOutlineHome size={22} />,
       },
+      {
+        id: 2,
+        name: "History",
+        path: "/allhistory",
+        icon: <HiOutlineQueueList size={22} />,
+      },
     ],
   },
+
   {
     title: "INSIGHTS",
     items: [
       {
-        id: 2,
+        id: 3,
         name: "Reflection",
         path: "/reflection",
         icon: <HiOutlineLightBulb size={22} />,
       },
     ],
   },
+
   {
     title: "SETTINGS",
     items: [
       {
-        id: 3,
+        id: 4,
         name: "Preferences",
         path: "/preferences",
         icon: <HiOutlineCog6Tooth size={22} />,
@@ -50,7 +58,6 @@ const menuSections = [
     ],
   },
 ];
-
 export default function Sidebar({ isCollapsed, setIsCollapsed, userProfile }) {
   // used to redirect the user after logout
   const navigate = useNavigate();

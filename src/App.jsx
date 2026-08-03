@@ -12,7 +12,7 @@ import Profile from "./pages/Profile";
 import MotivationHistory from "./pages/MotivationHistory";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-
+import ActivityHistoryCard from "./pages/ActivityHistoryCard";
 import useTheme from "./hooks/useTheme";
 import useNotifications from "./hooks/useNotifications";
 import useGoals from "./hooks/useGoals";
@@ -154,6 +154,20 @@ function App() {
                           goals={goals}
                           setGoals={setGoals}
                           addNotification={addNotification}
+                        />
+                      </ProtectedRoute>
+                    }
+                  />
+
+                  <Route
+                    path="/allhistory"
+                    element={
+                      <ProtectedRoute>
+                        <ActivityHistoryCard
+                          goals={goals}
+                          setGoals={setGoals}
+                          addNotification={addNotification}
+                          onDelete={deleteGoal}
                         />
                       </ProtectedRoute>
                     }
